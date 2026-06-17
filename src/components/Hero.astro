@@ -33,6 +33,11 @@ const {
   imageUrl
 } = Astro.props;
 
+// Ensure imageUrl includes the base path for GitHub Pages subdirectory deployment
+const resolvedImageUrl = imageUrl?.startsWith('/') && !imageUrl.startsWith(import.meta.env.BASE_URL)
+  ? import.meta.env.BASE_URL.replace(/\/$/, '') + imageUrl
+  : imageUrl;
+
 const showPanel = variant !== 'centered' && variant !== 'image-full';
 ---
 
@@ -40,7 +45,7 @@ const showPanel = variant !== 'centered' && variant !== 'image-full';
   <section class="hero hero--image-full" data-theme="dark">
     <div
       class="hero__bg"
-      style={imageUrl ? `background-image: url(${imageUrl})` : undefined}
+      style={resolvedImageUrl ? `background-image: url(${resolvedImageUrl})` : undefined}
       aria-hidden="true"
     ></div>
     <div class="hero__overlay" aria-hidden="true"></div>

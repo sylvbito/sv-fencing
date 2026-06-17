@@ -51,17 +51,17 @@ const hero = home?.data.hero;
   </Section>
 
   <!-- Services -->
-  <Section eyebrow="What we do" title="Our fencing services">
+  <Section id="services" eyebrow="What we do" title="Our fencing services">
     <ServiceGrid services={services} variant={home?.data.servicesVariant ?? 'grid'} />
   </Section>
 
   <!-- Testimonials -->
-  <Section theme="surface" eyebrow="Happy customers" title="What our clients say">
+  <Section id="testimonials" theme="surface" eyebrow="Happy customers" title="What our clients say">
     <Testimonials testimonials={testimonials} variant={home?.data.testimonialsVariant ?? 'grid'} />
   </Section>
 
   <!-- FAQ -->
-  <Section eyebrow="Questions" title="Frequently asked">
+  <Section id="faq" eyebrow="Questions" title="Frequently asked">
     <FAQList faqs={faqs} />
   </Section>
 
