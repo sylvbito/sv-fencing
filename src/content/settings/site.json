@@ -1,0 +1,16 @@
+{
+  "name": "S V Fencing",
+  "description": "Yarra Valley's trusted residential fencing specialists — Colorbond, timber, paling, pool fencing & gates. Free quotes, from $80/m.",
+  "url": "https://sylvgira.github.io/sv-fencing/",
+  "email": "enquiries@svfencing.com.au",
+  "phone": "0434 813 593",
+  "address": "Yarra Valley VIC 3775",
+  "ctaLabel": "Get a free quote",
+  "ctaUrl": "#contact",
+  "socialLinks": [
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/svfencing.au"
+    }
+  ]
+}

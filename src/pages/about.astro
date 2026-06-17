@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageIntro from '@components/PageIntro.astro';
+import Section from '@components/Section.astro';
+import CTABand from '@components/CTABand.astro';
+---
+
+<BaseLayout title="About" description="Family-owned fencing contractor based in the Yarra Valley. Quality workmanship, honest pricing, reliable service.">
+  <PageIntro
+    eyebrow="About us"
+    title="A family business, built on trust"
+    intro="S V Fencing is a family-owned and operated fencing contractor serving Melbourne's Eastern Suburbs and the Yarra Valley. We take pride in quality workmanship, fair pricing, and showing up when we say we will."
+  />
+
+  <Section title="Our story" narrow>
+    <div class="prose">
+      <p>
+        S V Fencing was founded on a simple belief: every homeowner deserves a well-built fence at a fair price — installed by people who care about the result. We're not a franchise or a sales-driven operation. We're a local family business that lives and works in the community we serve.
+      </p>
+      <p>
+        Every job — whether it's a 30-metre Colorbond boundary or a custom timber gate — gets the same attention to detail. We use quality materials, proper construction methods, and we don't cut corners. That's why most of our work comes from word-of-mouth referrals.
+      </p>
+      <p>
+        From your first phone call to the final walk-around, you're dealing with us directly. Free quotes, honest advice, and a fixed price before we start — no surprises, no hidden costs.
+      </p>
+    </div>
+  </Section>
+
+  <Section theme="surface" title="Why choose us" narrow>
+    <div class="prose">
+      <ul>
+        <li><strong>Local & family-owned</strong> — we live and work in the Yarra Valley</li>
+        <li><strong>Free, fixed-price quotes</strong> — no obligation, no hidden extras</li>
+        <li><strong>Quality materials</strong> — genuine Colorbond steel, treated pine, Australian-made hardware</li>
+        <li><strong>Reliable service</strong> — we show up on time and finish on schedule</li>
+        <li><strong>Clean site</strong> — old fence removed, new fence installed, site left spotless</li>
+      </ul>
+    </div>
+  </Section>
+
+  <CTABand
+    title="Ready to talk about your project?"
+    text="Call us on 0434 813 593 or fill in the contact form for a free, no-obligation quote."
+    label="Get a free quote"
+    href="/#contact"
+  />
+</BaseLayout>

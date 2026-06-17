@@ -1,0 +1,119 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageIntro from '@components/PageIntro.astro';
+import Section from '@components/Section.astro';
+
+const site = await getEntry('settings', 'site');
+---
+
+<BaseLayout title="Contact" description="Get in touch for a free fencing quote. Call 0434 813 593 or fill in the form.">
+  <PageIntro
+    eyebrow="Contact"
+    title="Start with a conversation"
+    intro="Tell us about your fencing project and we'll get back to you with a fixed price — usually within 24 hours. Prefer a quick quote? Call us or request an SMS reply."
+  />
+
+  <Section>
+    <div class="contact-block">
+      <div>
+        <h2>Contact details</h2>
+        <dl>
+          <dt>Phone</dt>
+          <dd><a href="tel:0434813593">0434 813 593</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:enquiries@svfencing.com.au">enquiries@svfencing.com.au</a></dd>
+          <dt>Service area</dt>
+          <dd>Yarra Valley VIC 3775<br />Melbourne's Eastern Suburbs</dd>
+        </dl>
+      </div>
+      <form name="contact" method="post" data-netlify="false">
+        <label>
+          Name *
+          <input type="text" name="name" autocomplete="name" required placeholder="Your full name" />
+        </label>
+        <label>
+          Email *
+          <input type="email" name="email" autocomplete="email" required placeholder="your@email.com" />
+        </label>
+        <label>
+          Phone
+          <input type="tel" name="phone" autocomplete="tel" placeholder="e.g. 0400 000 000" />
+        </label>
+        <label>
+          Brief description *
+          <textarea name="description" rows="4" required placeholder="Tell us about the fence you need — type, length, location..."></textarea>
+        </label>
+        <button class="button" type="submit">Send enquiry</button>
+        <p class="sms-note">📱 Leave your number and we'll text you an instant quote within minutes.</p>
+      </form>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .contact-block {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: var(--space-8);
+  }
+
+  dl {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  dt {
+    color: var(--color-text);
+    font-weight: 800;
+  }
+
+  dd {
+    margin: 0 0 var(--space-4);
+    color: var(--color-text-muted);
+  }
+
+  dd a {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+
+  form {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  label {
+    display: grid;
+    gap: var(--space-2);
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem 0.95rem;
+    background: var(--color-page);
+    color: var(--color-text);
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .sms-note {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+    padding-top: var(--space-3);
+  }
+
+  @media (max-width: 820px) {
+    .contact-block {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

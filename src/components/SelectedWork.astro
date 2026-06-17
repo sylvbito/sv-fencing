@@ -1,0 +1,108 @@
+---
+interface Project {
+  title: string;
+  description?: string;
+  imageUrl?: string;
+}
+
+interface Props {
+  projects?: Project[];
+}
+
+const {
+  projects = [
+    { title: 'Project one', description: 'Short description of the work', imageUrl: '' },
+    { title: 'Project two', description: 'Short description of the work', imageUrl: '' },
+    { title: 'Project three', description: 'Short description of the work', imageUrl: '' }
+  ]
+} = Astro.props;
+---
+
+<section class="selected-work">
+  <div class="container">
+    <div class="selected-work__header">
+      <p class="eyebrow">Selected work</p>
+    </div>
+  </div>
+
+  {projects.map((project) => (
+    <figure class="selected-work__project">
+      <div class="selected-work__image-wrap">
+        {project.imageUrl ? (
+          <img src={project.imageUrl} alt={project.title} loading="lazy" />
+        ) : (
+          <div class="selected-work__placeholder" aria-hidden="true"></div>
+        )}
+      </div>
+      <figcaption class="selected-work__caption container">
+        <strong>{project.title}</strong>
+        {project.description && <span>{project.description}</span>}
+      </figcaption>
+    </figure>
+  ))}
+</section>
+
+<style>
+  .selected-work {
+    padding-block: var(--section-y);
+    background: var(--color-section);
+  }
+
+  .selected-work__header {
+    margin-bottom: var(--space-7);
+  }
+
+  .selected-work__project {
+    margin: 0 0 var(--space-7);
+    display: block;
+  }
+
+  .selected-work__project:last-child {
+    margin-bottom: 0;
+  }
+
+  .selected-work__image-wrap {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .selected-work__image-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .selected-work__placeholder {
+    aspect-ratio: 16 / 9;
+    background: var(--color-border);
+    border-radius: var(--radius-xs);
+  }
+
+  .selected-work__caption {
+    display: flex;
+    gap: var(--space-3);
+    align-items: baseline;
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .selected-work__caption strong {
+    color: var(--color-heading);
+    font-size: var(--text-base);
+    font-weight: 600;
+  }
+
+  .selected-work__caption span {
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 720px) {
+    .selected-work__caption {
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+  }
+</style>

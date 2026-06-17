@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.astro/
+.local-preview/
+.DS_Store

@@ -1,0 +1,15 @@
+{
+  "hero": {
+    "variant": "image-full",
+    "eyebrow": "Yarra Valley Fencing Specialists",
+    "title": "Quality residential fencing\nfrom $80 per metre",
+    "intro": "Family-owned and operated. Free quotes, reliable service, and expert installation for Colorbond, timber, paling, pool fencing, and gates across Melbourne's Eastern Suburbs.",
+    "primaryLabel": "Get a free quote",
+    "primaryUrl": "#contact",
+    "imageUrl": "/uploads/hero-fence.jpg"
+  },
+  "servicesVariant": "grid",
+  "testimonialsVariant": "grid",
+  "galleryVariant": "grid",
+  "ctaVariant": "band"
+}

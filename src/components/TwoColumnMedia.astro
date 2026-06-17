@@ -1,0 +1,95 @@
+---
+interface Props {
+  imageUrl: string;
+  imageAlt?: string;
+  eyebrow?: string;
+  title: string;
+  body: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  mediaPosition?: 'left' | 'right';
+}
+
+const {
+  imageUrl,
+  imageAlt = '',
+  eyebrow,
+  title,
+  body,
+  ctaLabel,
+  ctaUrl,
+  mediaPosition = 'right'
+} = Astro.props;
+---
+
+<div class:list={['two-col', `two-col--media-${mediaPosition}`]}>
+  <div class="two-col__media">
+    <img
+      src={imageUrl}
+      alt={imageAlt || title}
+      loading="lazy"
+    />
+  </div>
+  <div class="two-col__content">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h2>{title}</h2>
+    <p>{body}</p>
+    {ctaLabel && ctaUrl && (
+      <a class="button" href={ctaUrl}>{ctaLabel}</a>
+    )}
+  </div>
+</div>
+
+<style>
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 7vw, 5rem);
+    align-items: center;
+  }
+
+  .two-col--media-left .two-col__media {
+    order: -1;
+  }
+
+  .two-col__media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-md);
+  }
+
+  .two-col__media:empty {
+    min-height: 16rem;
+    background: var(--color-section);
+    border-radius: var(--radius-md);
+  }
+
+  .two-col__content {
+    max-width: 34rem;
+  }
+
+  .two-col__content h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .two-col__content p {
+    font-size: var(--text-md);
+    margin-bottom: var(--space-5);
+  }
+
+  @media (max-width: 720px) {
+    .two-col {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .two-col--media-left .two-col__media {
+      order: 0;
+    }
+
+    .two-col__content {
+      max-width: none;
+    }
+  }
+</style>

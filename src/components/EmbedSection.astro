@@ -1,0 +1,116 @@
+---
+import Section from './Section.astro';
+
+interface Embed {
+  data: {
+    title: string;
+    eyebrow?: string;
+    intro?: string;
+    provider?: string;
+    enabled?: boolean;
+    embedCode: string;
+  };
+}
+
+interface Props {
+  embed: Embed;
+  variant?: 'default' | 'surface';
+}
+
+const { embed, variant = 'default' } = Astro.props;
+const { title, eyebrow, intro, provider, enabled = true, embedCode } = embed.data;
+const trimmedEmbedCode = embedCode.trim();
+
+/**
+ * Extract the src attribute from the first <iframe> in the embed code.
+ * Only iframe-based embeds are rendered — raw scripts and arbitrary HTML
+ * are rejected to prevent stored XSS via the CMS.
+ *
+ * Supported providers (all use iframe embeds):
+ *   - Google Maps, YouTube, Vimeo
+ *   - Booking/time-slot tools (Calendly, Acuity)
+ *   - Elfsight / SociableKIT (provide iframe fallback)
+ *   - Tagembed
+ *
+ * If you need script-based embeds, ask the provider for an iframe alternative.
+ */
+function extractIframeSrc(html: string): string | null {
+  const match = html.match(/<iframe[^>]*\s+src=["']([^"']+)["']/i);
+  return match ? match[1] : null;
+}
+
+const iframeSrc = extractIframeSrc(trimmedEmbedCode);
+---
+
+{enabled && iframeSrc && (
+  <Section eyebrow={eyebrow} title={title} intro={intro} variant={variant}>
+    <div class="embed-section">
+      <div class="embed-section__frame" data-provider={provider}>
+        <iframe
+          src={iframeSrc}
+          loading="lazy"
+          title={title}
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          class="embed-section__iframe"
+        />
+      </div>
+    </div>
+  </Section>
+)}
+
+<!-- Show a dev-only warning when embed code contains no iframe -->
+{enabled && trimmedEmbedCode && !iframeSrc && (
+  <Section eyebrow={eyebrow} title={title} intro={intro} variant={variant}>
+    <div class="embed-section">
+      <div class="embed-section__frame embed-section__frame--warning" data-provider={provider}>
+        <p class="embed-section__warning">
+          ⚠️ Embed code was not rendered. This template only accepts iframe-based embed codes.
+          Script-based embeds are blocked for security. Please ask your provider for an iframe
+          alternative or contact your developer.
+        </p>
+      </div>
+    </div>
+  </Section>
+)}
+
+<style>
+  .embed-section {
+    width: 100%;
+  }
+
+  .embed-section__frame {
+    min-height: 8rem;
+    overflow: hidden;
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-sm);
+    background: var(--color-page);
+  }
+
+  .embed-section__frame:empty {
+    display: none;
+  }
+
+  .embed-section__frame--warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-6);
+  }
+
+  .embed-section__warning {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    text-align: center;
+    margin: 0;
+    max-width: 42ch;
+  }
+
+  .embed-section__iframe {
+    display: block;
+    width: 100%;
+    min-height: 20rem;
+    border: none;
+  }
+</style>

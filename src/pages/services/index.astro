@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageIntro from '@components/PageIntro.astro';
+import Section from '@components/Section.astro';
+import ServiceGrid from '@components/ServiceGrid.astro';
+import CTABand from '@components/CTABand.astro';
+import { byOrder } from '../../lib/content';
+
+const services = byOrder(await getCollection('services'));
+---
+
+<BaseLayout title="Services" description="Colorbond, timber paling, pool fencing, gates and rural fencing — quality installation across Melbourne's Eastern Suburbs and Yarra Valley.">
+  <PageIntro
+    eyebrow="Services"
+    title="Quality fencing for every home"
+    intro="From a simple timber boundary to a fully automated driveway gate — we handle every type of residential fencing. All work is quoted fairly, built properly, and backed by our local reputation."
+  />
+
+  <Section>
+    <ServiceGrid services={services} />
+  </Section>
+
+  <CTABand
+    title="Not sure which fence is right for you?"
+    text="Call us on 0434 813 593 or fill in the contact form. We'll visit your property, talk through the options, and give you a fixed price — no obligation."
+    label="Get a free quote"
+    href="/#contact"
+  />
+</BaseLayout>

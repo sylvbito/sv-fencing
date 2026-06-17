@@ -1,0 +1,98 @@
+---
+interface Step {
+  label: string;
+  description: string;
+}
+
+interface Props {
+  steps?: Step[];
+}
+
+const {
+  steps = [
+    { label: 'Consultation', description: 'We visit your home, measure the space, and talk through how you want it to work.' },
+    { label: 'Design', description: 'CAD drawings and material samples. You review, we refine, you approve.' },
+    { label: 'Manufacture', description: 'Built in our workshop. Every component cut, finished, and assembled to specification.' },
+    { label: 'Installation', description: 'Fitted by our own team. Clean, on time, and finished to standard.' }
+  ]
+} = Astro.props;
+---
+
+<section class="process-strip">
+  <div class="container">
+    <div class="process-strip__header">
+      <p class="eyebrow">Our process</p>
+      <h2>How we work</h2>
+    </div>
+    <div class="process-strip__track">
+      {steps.map((step, i) => (
+        <div class="process-strip__step">
+          <span class="process-strip__number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="process-strip__label">{step.label}</h3>
+          <p class="process-strip__desc">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-strip {
+    padding-block: var(--section-y);
+  }
+
+  .process-strip__header {
+    margin-bottom: var(--space-7);
+  }
+
+  .process-strip__header h2 {
+    margin-bottom: 0;
+  }
+
+  .process-strip__track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+
+  .process-strip__step {
+    border-top: 1px solid var(--color-rule);
+    padding-top: var(--space-5);
+  }
+
+  .process-strip__number {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .process-strip__label {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    color: var(--color-heading);
+  }
+
+  .process-strip__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .process-strip__track {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .process-strip__track {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

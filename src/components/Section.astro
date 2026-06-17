@@ -1,0 +1,66 @@
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  theme?: 'default' | 'surface' | 'dark' | 'primary';
+  narrow?: boolean;
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  intro,
+  theme = 'default',
+  narrow = false
+} = Astro.props;
+
+const dataTheme = theme !== 'default' ? theme : undefined;
+---
+
+<section
+  id={id}
+  data-theme={dataTheme}
+  class:list={[
+    'section',
+    theme === 'surface' && 'section--surface'
+  ]}
+>
+  <div class={narrow ? 'container--narrow' : 'container'}>
+    {(eyebrow || title || intro) && (
+      <div class="section__header">
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        {title && <h2>{title}</h2>}
+        {intro && <p>{intro}</p>}
+      </div>
+    )}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: var(--section-y);
+    background: var(--color-page);
+  }
+
+  .section--surface {
+    background: var(--color-section);
+  }
+
+  .section__header {
+    max-width: 46rem;
+    margin-bottom: var(--space-7);
+  }
+
+  .section__header h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .section__header p:last-child {
+    margin-bottom: 0;
+    font-size: var(--text-md);
+  }
+</style>

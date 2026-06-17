@@ -1,0 +1,94 @@
+---
+import { getEntry } from 'astro:content';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import '@styles/theme.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const settings = await getEntry('settings', 'site');
+const site = settings?.data ?? {
+  name: 'S V Fencing',
+  description: 'Yarra Valley residential fencing specialists.',
+  url: 'https://sylvgira.github.io/sv-fencing/',
+  email: 'enquiries@svfencing.com.au',
+  phone: '0434 813 593',
+  address: 'Yarra Valley VIC 3775',
+  socialLinks: []
+};
+
+const { title, description = site.description, noindex = false } = Astro.props;
+const pageTitle = title ? `${title} | ${site.name}` : `${site.name} | ${site.description}`;
+const canonical = new URL(Astro.url.pathname, site.url).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https:; connect-src 'self' https:;"
+    />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <title>{pageTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD LocalBusiness Schema -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "S V Fencing",
+        "description": "Residential fencing contractor — Colorbond, timber, pool fencing & gates. Family-owned, serving Yarra Valley and Melbourne Eastern Suburbs.",
+        "telephone": "0434 813 593",
+        "email": "enquiries@svfencing.com.au",
+        "url": "https://sylvgira.github.io/sv-fencing/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Yarra Valley",
+          "addressRegion": "VIC",
+          "postalCode": "3775",
+          "addressCountry": "AU"
+        },
+        "areaServed": [
+          "Yarra Valley",
+          "Lilydale",
+          "Croydon",
+          "Mooroolbark",
+          "Chirnside Park",
+          "Healesville",
+          "Coldstream",
+          "Ringwood",
+          "Warrandyte",
+          "Eastern Suburbs Melbourne"
+        ],
+        "priceRange": "$$",
+        "sameAs": [
+          "https://www.facebook.com/svfencing.au"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header site={site} pathname={Astro.url.pathname} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer site={site} />
+  </body>
+</html>

@@ -1,0 +1,125 @@
+:root {
+  color-scheme: light;
+
+  /* ── Brand primitives ──────────────────────────────────
+     SV Fencing — deep forest green, trustworthy trades brand. */
+  --brand-name-color: #2D6A4F;
+  --brand-primary: #2D6A4F;
+  --brand-primary-contrast: #ffffff;
+  --brand-secondary: #f5f5f5;
+  --brand-accent: #52B788;
+
+  /* Neutral palette — rarely needs changing. */
+  --color-white: #ffffff;
+  --color-ink: #111111;
+  --color-muted: #666666;
+  --color-soft: #f5f5f5;
+  --color-surface: #ffffff;
+  --color-border: #d9d9d9;
+
+  /* Overlay & accent colours. */
+  --color-overlay: rgba(17, 17, 17, 0.58);
+  --color-overlay-strong: rgba(0, 0, 0, 0.75);
+  --color-icon-accent: var(--brand-primary);
+
+  /* ── Theme: default (page) ──────────────────────────── */
+  --color-page: var(--color-white);
+  --color-text: var(--color-ink);
+  --color-text-muted: var(--color-muted);
+  --color-heading: var(--brand-name-color);
+  --color-link: var(--brand-primary);
+  --color-section: var(--color-soft);
+  --color-rule: var(--color-border);
+  --color-button: var(--brand-primary);
+  --color-button-text: var(--brand-primary-contrast);
+  --color-button-outline: var(--color-text);
+
+  /* Typography. */
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-body: var(--font-sans);
+  --font-condensed: "Inter Tight", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  /* ── Type scale: 1.25 Major Third ────────────────────── */
+  --text-xs:  clamp(0.7rem,  0.68rem + 0.08vw, 0.75rem);
+  --text-sm:  clamp(0.82rem, 0.8rem + 0.1vw,  0.875rem);
+  --text-base: 1rem;
+  --text-md:  clamp(1.125rem, 1.07rem + 0.24vw, 1.25rem);
+
+  /* Headings — aggressive fluid */
+  --text-lg:   clamp(1.25rem,  1.11rem + 0.61vw, 1.563rem);
+  --text-xl:   clamp(1.5rem,   1.29rem + 0.88vw, 1.953rem);
+  --text-2xl:  clamp(1.75rem,  1.44rem + 1.34vw, 2.441rem);
+  --text-3xl:  clamp(2.25rem,  1.89rem + 1.56vw, 3.052rem);
+
+  /* Display — hero headings and stat numbers */
+  --text-display: clamp(3.5rem, 1.9rem + 6.8vw, 7rem);
+  --line-tight: 1.02;
+  --line-heading: 1.12;
+  --line-body: 1.65;
+
+  /* Layout. */
+  --container: 1120px;
+  --container-narrow: 760px;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --section-y: clamp(4rem, 9vw, 7rem);
+  --section-y-compact: clamp(2.5rem, 6vw, 4.5rem);
+
+  /* Spacing scale. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Shape. */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-pill: 999px;
+
+  /* Effects. */
+  --shadow-subtle: 0 1px 2px rgba(17, 17, 17, 0.08);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--brand-primary), transparent 72%);
+}
+
+/* ── Theme: surface ───────────────────────────────────── */
+[data-theme="surface"] {
+  --color-page: var(--color-soft);
+  --color-section: var(--color-white);
+}
+
+/* ── Theme: dark ──────────────────────────────────────── */
+[data-theme="dark"] {
+  --color-page: #111111;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.65);
+  --color-heading: #ffffff;
+  --color-link: #ffffff;
+  --color-section: color-mix(in srgb, #111111, #ffffff 10%);
+  --color-rule: rgba(255, 255, 255, 0.12);
+  --color-button: #ffffff;
+  --color-button-text: #111111;
+  --color-button-outline: rgba(255, 255, 255, 0.35);
+  --color-icon-accent: #ffffff;
+}
+
+/* ── Theme: primary ───────────────────────────────────── */
+[data-theme="primary"] {
+  --color-page: var(--brand-primary);
+  --color-text: var(--brand-primary-contrast);
+  --color-text-muted: color-mix(in srgb, var(--brand-primary-contrast), transparent 30%);
+  --color-heading: var(--brand-primary-contrast);
+  --color-link: var(--brand-primary-contrast);
+  --color-section: color-mix(in srgb, var(--brand-primary), var(--color-ink) 8%);
+  --color-rule: color-mix(in srgb, var(--brand-primary-contrast), transparent 82%);
+  --color-button: var(--brand-accent);
+  --color-button-text: var(--brand-primary-contrast);
+  --color-button-outline: color-mix(in srgb, var(--brand-primary-contrast), transparent 50%);
+  --color-icon-accent: var(--brand-primary-contrast);
+}

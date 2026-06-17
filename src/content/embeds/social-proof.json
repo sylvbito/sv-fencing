@@ -1,0 +1,9 @@
+{
+  "title": "Latest updates",
+  "eyebrow": "Social",
+  "intro": "Paste a trusted third-party embed here when the client wants a live social feed, reviews widget, map, booking widget, or similar section.",
+  "provider": "Example",
+  "enabled": false,
+  "order": 99,
+  "embedCode": "<!-- Paste the full embed code from Elfsight or another trusted provider. Keep this disabled until real client code is added. -->"
+}

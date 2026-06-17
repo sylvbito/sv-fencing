@@ -1,0 +1,215 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body);
+  background: var(--color-page);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-size: var(--text-base);
+  line-height: var(--line-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, currentColor, transparent 62%);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  line-height: var(--line-heading);
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+  font-weight: 500;
+  line-height: var(--line-tight);
+}
+
+h2 {
+  font-weight: 600;
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-lg);
+}
+
+p {
+  color: var(--color-text-muted);
+}
+
+.container {
+  width: min(100% - (var(--gutter) * 2), var(--container));
+  margin-inline: auto;
+}
+
+.container--narrow {
+  width: min(100% - (var(--gutter) * 2), var(--container-narrow));
+  margin-inline: auto;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, var(--space-5));
+}
+
+.eyebrow {
+  margin-bottom: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.75rem 1.1rem;
+  border: 1px solid var(--color-button);
+  border-radius: var(--radius-sm);
+  background: var(--color-button);
+  color: var(--color-button-text);
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.button:hover {
+  filter: brightness(0.95);
+}
+
+.button--secondary {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-rule);
+}
+
+.button--solid-light {
+  background: var(--color-button);
+  color: var(--color-button-text);
+  border-color: var(--color-button);
+}
+
+.button--solid-light:hover {
+  filter: brightness(0.9);
+}
+
+.button--outline-light {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-button-outline);
+}
+
+.button--outline-light:hover {
+  border-color: var(--color-text);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.surface {
+  background: var(--color-section);
+}
+
+.prose {
+  max-width: var(--container-narrow);
+}
+
+.prose :where(h2, h3) {
+  margin-top: var(--space-7);
+}
+
+.prose :where(ul, ol) {
+  padding-left: 1.2rem;
+  color: var(--color-text-muted);
+}
+
+.prose :where(li + li) {
+  margin-top: var(--space-2);
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 100;
+  transform: translateY(-100%);
+  left: var(--space-4);
+  top: 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-text);
+  color: var(--color-page);
+}
+
+.skip-link:focus {
+  transform: translateY(var(--space-4));
+}
+
+/* ── Section spacing ──
+   Same-colour stacked sections compress the gap between them.
+   Sections with different backgrounds keep full spacing. */
+.section:not(.section--surface) + .section:not(.section--surface),
+.section--surface + .section--surface {
+  padding-top: 0;
+}
+
+/* ── Button hierarchy ──
+   Primary (filled), Secondary (ghost/outlined), Tertiary (link).
+   Light variants (--primary-light, --secondary-light, --tertiary-light)
+   for dark backgrounds. See the JTB client fork for examples. */
