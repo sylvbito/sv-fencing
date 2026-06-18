@@ -8,7 +8,7 @@
     "primaryUrl": "#contact",
     "imageUrl": "/uploads/fence-colorbond.jpg"
   },
-  "servicesVariant": "icon-grid",
+  "servicesVariant": "grid",
   "testimonialsVariant": "grid",
   "galleryVariant": "portfolio",
   "ctaVariant": "band",
