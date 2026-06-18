@@ -10,6 +10,28 @@
   },
   "servicesVariant": "grid",
   "testimonialsVariant": "grid",
-  "galleryVariant": "grid",
-  "ctaVariant": "band"
+  "galleryVariant": "portfolio",
+  "ctaVariant": "band",
+  "gallery": [
+    {
+      "title": "Colorbond Steel Fencing",
+      "description": "Modern Colorbond fencing in a range of colours — clean lines, low maintenance, built to last.",
+      "imageUrl": "/uploads/fence-colorbond.jpg"
+    },
+    {
+      "title": "Timber Paling Fencing",
+      "description": "Classic timber paling — natural appearance, full privacy, and that warm backyard feel.",
+      "imageUrl": "/uploads/fence-timber.jpg"
+    },
+    {
+      "title": "Pool Safety Fencing",
+      "description": "Compliant pool fencing that keeps your family safe without compromising on style.",
+      "imageUrl": "/uploads/fence-pool.jpg"
+    },
+    {
+      "title": "Rural & Agricultural",
+      "description": "Post-and-wire, hingejoint, and rural fencing for properties of any size across the Yarra Valley.",
+      "imageUrl": "/uploads/fence-rural.jpg"
+    }
+  ]
 }

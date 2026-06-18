@@ -7,6 +7,7 @@ import StatsBar from '@components/StatsBar.astro';
 import ServiceGrid from '@components/ServiceGrid.astro';
 import Section from '@components/Section.astro';
 import Testimonials from '@components/Testimonials.astro';
+import GalleryBlock from '@components/GalleryBlock.astro';
 import FAQList from '@components/FAQList.astro';
 import CTABand from '@components/CTABand.astro';
 import { byOrder } from '../lib/content';
@@ -53,6 +54,15 @@ const hero = home?.data.hero;
   <!-- Services -->
   <Section id="services" eyebrow="What we do" title="Our fencing services">
     <ServiceGrid services={services} variant={home?.data.servicesVariant ?? 'grid'} />
+  </Section>
+
+  <!-- Gallery -->
+  <Section id="gallery" theme="surface" eyebrow="Recent work" title="Our fencing projects">
+    {
+      home?.data.gallery && home.data.gallery.length > 0 ? (
+        <GalleryBlock items={home.data.gallery} variant={home?.data.galleryVariant ?? 'grid'} />
+      ) : null
+    }
   </Section>
 
   <!-- Testimonials -->
