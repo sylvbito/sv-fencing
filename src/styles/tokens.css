@@ -43,8 +43,8 @@
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   /* ── Type scale: 1.25 Major Third ────────────────────── */
-  --text-xs:  clamp(0.7rem,  0.68rem + 0.08vw, 0.75rem);
-  --text-sm:  clamp(0.82rem, 0.8rem + 0.1vw,  0.875rem);
+  --text-xs:  clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);
+  --text-sm:  clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
   --text-base: 1rem;
   --text-md:  clamp(1.125rem, 1.07rem + 0.24vw, 1.25rem);
 
