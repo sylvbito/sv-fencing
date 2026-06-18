@@ -8,7 +8,7 @@
     "primaryUrl": "#contact",
     "imageUrl": "/uploads/fence-colorbond.jpg"
   },
-  "servicesVariant": "grid",
+  "servicesVariant": "icon-grid",
   "testimonialsVariant": "grid",
   "galleryVariant": "portfolio",
   "ctaVariant": "band",
@@ -16,22 +16,22 @@
     {
       "title": "Colorbond Steel Fencing",
       "description": "Modern Colorbond fencing in a range of colours — clean lines, low maintenance, built to last.",
-      "imageUrl": "/uploads/fence-colorbond.jpg"
+      "imageUrl": "/uploads/fence-timber.jpg"
     },
     {
       "title": "Timber Paling Fencing",
       "description": "Classic timber paling — natural appearance, full privacy, and that warm backyard feel.",
-      "imageUrl": "/uploads/fence-timber.jpg"
+      "imageUrl": "/uploads/fence-colorbond.jpg"
     },
     {
       "title": "Pool Safety Fencing",
       "description": "Compliant pool fencing that keeps your family safe without compromising on style.",
-      "imageUrl": "/uploads/fence-pool.jpg"
+      "imageUrl": "/uploads/fence-detail.jpg"
     },
     {
-      "title": "Rural & Agricultural",
-      "description": "Post-and-wire, hingejoint, and rural fencing for properties of any size across the Yarra Valley.",
-      "imageUrl": "/uploads/fence-rural.jpg"
+      "title": "Gates & Automation",
+      "description": "Custom driveway and pedestrian gates — manual or automated, built to last.",
+      "imageUrl": "/uploads/fence-gates.jpg"
     }
   ]
 }
