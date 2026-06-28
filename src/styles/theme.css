@@ -204,8 +204,10 @@ p {
 /* ── Section spacing ──
    Same-colour stacked sections compress the gap between them.
    Sections with different backgrounds keep full spacing. */
-.section:not(.section--surface) + .section:not(.section--surface),
-.section--surface + .section--surface {
+.section:not([data-theme]) + .section:not([data-theme]),
+[data-theme="surface"] + [data-theme="surface"],
+[data-theme="primary"] + [data-theme="primary"],
+[data-theme="dark"] + [data-theme="dark"] {
   padding-top: 0;
 }
 
