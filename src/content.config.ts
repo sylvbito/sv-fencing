@@ -33,6 +33,7 @@ const testimonials = defineCollection({
     quote: z.string(),
     name: z.string(),
     role: z.string().optional(),
+    stars: z.number().min(1).max(5).default(5),
     order: z.number().default(99)
   })
 });
@@ -82,6 +83,7 @@ const pages = defineCollection({
     testimonialsVariant: z.enum(['grid', 'stacked']).default('grid'),
     galleryVariant: z.enum(['grid', 'feature-left', 'feature-right', 'portfolio']).default('grid'),
     ctaVariant: z.enum(['band', 'split', 'inline']).default('band'),
+    serviceImages: z.record(z.string(), z.string()).optional(),
     gallery: z.array(z.object({
       title: z.string(),
       description: z.string().optional(),
