@@ -91,9 +91,11 @@ const { testimonials, variant = 'grid' } = Astro.props;
     font-style: normal;
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 860px) {
     .testimonials {
       grid-template-columns: 1fr;
+      max-width: 36rem;
+      margin-inline: auto;
     }
   }
 </style>
