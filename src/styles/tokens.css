@@ -2,12 +2,12 @@
   color-scheme: light;
 
   /* ── Brand primitives ──────────────────────────────────
-     SV Fencing — deep forest green, trustworthy trades brand. */
-  --brand-name-color: #2D6A4F;
-  --brand-primary: #2D6A4F;
+     SV Fencing — rich eucalyptus green, confident trades brand. */
+  --brand-name-color: #1B6B4A;
+  --brand-primary: #1B6B4A;
   --brand-primary-contrast: #ffffff;
   --brand-secondary: #f5f5f5;
-  --brand-accent: #52B788;
+  --brand-accent: #3C9D6B;
 
   /* Neutral palette — rarely needs changing. */
   --color-white: #ffffff;
@@ -15,11 +15,11 @@
   --color-muted: #666666;
   --color-soft: #f5f5f5;
   --color-surface: #ffffff;
-  --color-border: #d9d9d9;
+  --color-border: #cfcfcf;
 
   /* Overlay & accent colours. */
-  --color-overlay: rgba(17, 17, 17, 0.58);
-  --color-overlay-strong: rgba(0, 0, 0, 0.75);
+  --color-overlay: rgba(17, 17, 17, 0.62);
+  --color-overlay-strong: rgba(0, 0, 0, 0.82);
   --color-icon-accent: var(--brand-primary);
 
   /* ── Theme: default (page) ──────────────────────────── */
@@ -98,7 +98,7 @@
 [data-theme="dark"] {
   --color-page: #111111;
   --color-text: #ffffff;
-  --color-text-muted: rgba(255, 255, 255, 0.65);
+  --color-text-muted: rgba(255, 255, 255, 0.72);
   --color-heading: #ffffff;
   --color-link: #ffffff;
   --color-section: color-mix(in srgb, #111111, #ffffff 10%);

@@ -41,7 +41,7 @@ const isDark = variant === 'dark';
       </div>
       {site.socialLinks && site.socialLinks.length > 0 && (
         <div>
-          <h2>Social</h2>
+          <h2>{site.socialLinks.length > 1 ? 'Social' : 'Follow'}</h2>
           {site.socialLinks.map((link) => <a href={link.url}>{link.label}</a>)}
         </div>
       )}
