@@ -57,6 +57,12 @@ const dataTheme = theme !== 'default' ? theme : undefined;
     padding-block: var(--section-y-compact);
   }
 
+  /* Collapse top padding when sections of the same background stack */
+  .section:not(.section--surface) + .section:not(.section--surface),
+  .section--surface + .section--surface {
+    padding-top: 0;
+  }
+
   .section__header {
     max-width: 46rem;
     margin-bottom: var(--space-5);
