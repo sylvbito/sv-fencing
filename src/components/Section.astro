@@ -58,8 +58,10 @@ const dataTheme = theme !== 'default' ? theme : undefined;
   }
 
   /* Collapse top padding when sections of the same background stack */
-  .section:not(.section--surface) + .section:not(.section--surface),
-  .section--surface + .section--surface {
+  .section:not([data-theme]) + .section:not([data-theme]),
+  [data-theme="surface"] + [data-theme="surface"],
+  [data-theme="primary"] + [data-theme="primary"],
+  [data-theme="dark"] + [data-theme="dark"] {
     padding-top: 0;
   }
 
