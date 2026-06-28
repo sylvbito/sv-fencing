@@ -6,6 +6,7 @@ interface Props {
   intro?: string;
   theme?: 'default' | 'surface' | 'dark' | 'primary';
   narrow?: boolean;
+  padding?: 'default' | 'compact';
 }
 
 const {
@@ -14,7 +15,8 @@ const {
   title,
   intro,
   theme = 'default',
-  narrow = false
+  narrow = false,
+  padding = 'default'
 } = Astro.props;
 
 const dataTheme = theme !== 'default' ? theme : undefined;
@@ -25,7 +27,8 @@ const dataTheme = theme !== 'default' ? theme : undefined;
   data-theme={dataTheme}
   class:list={[
     'section',
-    theme === 'surface' && 'section--surface'
+    theme === 'surface' && 'section--surface',
+    padding === 'compact' && 'section--compact'
   ]}
 >
   <div class={narrow ? 'container--narrow' : 'container'}>
@@ -48,6 +51,10 @@ const dataTheme = theme !== 'default' ? theme : undefined;
 
   .section--surface {
     background: var(--color-section);
+  }
+
+  .section--compact {
+    padding-block: var(--section-y-compact);
   }
 
   .section__header {
