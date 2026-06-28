@@ -7,7 +7,9 @@ const { logos = ['Local partner', 'Industry body', 'Community group', 'Supplier'
 ---
 
 <div class="logo-strip" aria-label="Associated organisations">
-  {logos.map((logo) => <span>{logo}</span>)}
+  {logos.map((logo) => (
+    <span set:html={logo.replace(/\n/g, '<br>')} />
+  ))}
 </div>
 
 <style>

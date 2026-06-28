@@ -6,27 +6,34 @@
     "intro": "Family-owned and operated. Free quotes, reliable service, and expert installation for Colorbond, timber, paling, pool fencing, and gates across Melbourne's Eastern Suburbs.",
     "primaryLabel": "Get a free quote",
     "primaryUrl": "#contact",
-    "imageUrl": "/uploads/fence-colorbond.jpg"
+    "imageUrl": "/uploads/hero-fence.jpg"
   },
   "servicesVariant": "grid",
   "testimonialsVariant": "grid",
   "galleryVariant": "portfolio",
   "ctaVariant": "band",
+  "serviceImages": {
+    "colorbond": "/uploads/fence-colorbond.jpg",
+    "timber-paling": "/uploads/fence-timber.jpg",
+    "pool-fencing": "/uploads/fence-pool.jpg",
+    "gates": "/uploads/fence-gates.jpg",
+    "rural-fencing": "/uploads/fence-rural.jpg"
+  },
   "gallery": [
     {
       "title": "Colorbond Steel Fencing",
       "description": "Modern Colorbond fencing in a range of colours — clean lines, low maintenance, built to last.",
-      "imageUrl": "/uploads/fence-timber.jpg"
+      "imageUrl": "/uploads/fence-colorbond.jpg"
     },
     {
       "title": "Timber Paling Fencing",
       "description": "Classic timber paling — natural appearance, full privacy, and that warm backyard feel.",
-      "imageUrl": "/uploads/fence-colorbond.jpg"
+      "imageUrl": "/uploads/fence-timber.jpg"
     },
     {
       "title": "Pool Safety Fencing",
       "description": "Compliant pool fencing that keeps your family safe without compromising on style.",
-      "imageUrl": "/uploads/fence-detail.jpg"
+      "imageUrl": "/uploads/fence-pool.jpg"
     },
     {
       "title": "Gates & Automation",

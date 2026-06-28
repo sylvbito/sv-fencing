@@ -10,6 +10,7 @@ import Testimonials from '@components/Testimonials.astro';
 import GalleryBlock from '@components/GalleryBlock.astro';
 import FAQList from '@components/FAQList.astro';
 import CTABand from '@components/CTABand.astro';
+import LogoStrip from '@components/LogoStrip.astro';
 import { byOrder } from '../lib/content';
 
 const site = await getEntry('settings', 'site');
@@ -39,6 +40,18 @@ const hero = home?.data.hero;
     body="S V Fencing is a family-owned and operated fencing contractor based in the Yarra Valley. We specialise in residential fencing — Colorbond, timber paling, pool fencing, gates, and rural fencing — for homes across Melbourne's Eastern Suburbs. Every job is quoted fairly, built properly, and backed by reliable local service. No salespeople, no call centres — just us, on site, getting it done."
   />
 
+  <!-- Trust / certifications -->
+  <Section theme="surface" aria-label="Certifications and quality">
+    <LogoStrip
+      logos={[
+        'Australian Made\nColorbond® Steel',
+        'Licensed &\nFully Insured',
+        'CCA-Treated\nTimber Products',
+        'Free On-Site\nMeasure & Quote'
+      ]}
+    />
+  </Section>
+
   <!-- Pricing highlight -->
   <Section theme="primary">
     <StatsBar
@@ -53,7 +66,7 @@ const hero = home?.data.hero;
 
   <!-- Services -->
   <Section id="services" eyebrow="What we do" title="Our fencing services">
-    <ServiceGrid services={services} variant={home?.data.servicesVariant ?? 'grid'} />
+    <ServiceGrid services={services} variant={home?.data.servicesVariant ?? 'grid'} serviceImages={home?.data.serviceImages} />
   </Section>
 
   <!-- Gallery -->
@@ -101,6 +114,18 @@ const hero = home?.data.hero;
         <label>
           Phone
           <input type="tel" name="phone" autocomplete="tel" placeholder="e.g. 0400 000 000" />
+        </label>
+        <label>
+          Fence type
+          <select name="fence-type">
+            <option value="">Select a fence type…</option>
+            <option value="colorbond">Colorbond Steel</option>
+            <option value="timber">Timber Paling</option>
+            <option value="pool">Pool Fencing</option>
+            <option value="gates">Gates & Automation</option>
+            <option value="rural">Rural Fencing</option>
+            <option value="other">Other / Not sure</option>
+          </select>
         </label>
         <label>
           Brief description *
@@ -164,6 +189,7 @@ const hero = home?.data.hero;
   }
 
   .contact-form input,
+  .contact-form select,
   .contact-form textarea {
     width: 100%;
     border: 1px solid var(--color-rule);
@@ -172,6 +198,16 @@ const hero = home?.data.hero;
     background: var(--color-page);
     color: var(--color-text);
     font-size: var(--text-base);
+    font-family: inherit;
+  }
+
+  .contact-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.95rem center;
+    padding-right: 2.2rem;
+    cursor: pointer;
   }
 
   .contact-form textarea {

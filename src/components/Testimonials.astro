@@ -4,6 +4,7 @@ interface Testimonial {
     quote: string;
     name: string;
     role?: string;
+    stars?: number;
   };
 }
 
@@ -18,6 +19,13 @@ const { testimonials, variant = 'grid' } = Astro.props;
 <div class:list={['testimonials', `testimonials--${variant}`]}>
   {testimonials.map((item) => (
     <figure>
+      <div class="stars" aria-label={`${item.data.stars ?? 5} out of 5 stars`}>
+        {Array.from({ length: 5 }, (_, i) => (
+          <svg width="18" height="18" viewBox="0 0 20 20" fill={i < (item.data.stars ?? 5) ? 'currentColor' : 'none'} stroke="currentColor" stroke-width="1.5">
+            <path d="M10 1.5l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.88l-4.77 2.51.91-5.33-3.87-3.77 5.34-.78L10 1.5z"/>
+          </svg>
+        ))}
+      </div>
       <blockquote>{item.data.quote}</blockquote>
       <figcaption>
         <strong>{item.data.name}</strong>
@@ -44,6 +52,14 @@ const { testimonials, variant = 'grid' } = Astro.props;
     padding: var(--space-5);
     border-left: 3px solid var(--brand-primary);
     background: var(--color-page);
+    border-radius: var(--radius-sm);
+  }
+
+  .stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: var(--space-4);
+    color: #f5a623;
   }
 
   blockquote {
