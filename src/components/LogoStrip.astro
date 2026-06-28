@@ -36,7 +36,6 @@ const fallbackIcons: Record<string, string> = {
   .logo-strip {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    border: 1.5px solid var(--color-rule);
     border-radius: var(--radius-md);
     background: var(--color-page);
   }
@@ -65,21 +64,9 @@ const fallbackIcons: Record<string, string> = {
     height: 32px;
   }
 
-  .logo-strip span + span {
-    border-left: 1.5px solid var(--color-rule);
-  }
-
   @media (max-width: 860px) {
     .logo-strip {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .logo-strip span:nth-child(odd) {
-      border-left: 0;
-    }
-
-    .logo-strip span:nth-child(n + 3) {
-      border-top: 1.5px solid var(--color-rule);
     }
   }
 </style>
