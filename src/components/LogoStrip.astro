@@ -1,15 +1,35 @@
 ---
+interface LogoItem {
+  label: string;
+  icon?: string;
+}
+
 interface Props {
-  logos?: string[];
+  logos?: (string | LogoItem)[];
 }
 
 const { logos = ['Local partner', 'Industry body', 'Community group', 'Supplier'] } = Astro.props;
+
+const fallbackIcons: Record<string, string> = {
+  'Australian Made': `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12"/></svg>`,
+  'Licensed': `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>`,
+  'CCA-Treated': `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+  'Free': `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>`,
+};
 ---
 
 <div class="logo-strip" aria-label="Associated organisations">
-  {logos.map((logo) => (
-    <span set:html={logo.replace(/\n/g, '<br>')} />
-  ))}
+  {logos.map((logo) => {
+    const label = typeof logo === 'string' ? logo : logo.label;
+    const iconKey = Object.keys(fallbackIcons).find(k => label.startsWith(k));
+    const iconSvg = typeof logo === 'object' && logo.icon ? logo.icon : (iconKey ? fallbackIcons[iconKey] : null);
+    return (
+      <span>
+        {iconSvg && <span class="logo-strip__icon" set:html={iconSvg} />}
+        <span set:html={label.replace(/\n/g, '<br>')} />
+      </span>
+    );
+  })}
 </div>
 
 <style>
@@ -29,6 +49,19 @@ const { logos = ['Local partner', 'Industry body', 'Community group', 'Supplier'
     font-size: var(--text-sm);
     font-weight: 700;
     text-align: center;
+    gap: var(--space-2);
+  }
+
+  .logo-strip__icon {
+    color: var(--color-icon-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-strip__icon :global(svg) {
+    width: 28px;
+    height: 28px;
   }
 
   .logo-strip span + span {

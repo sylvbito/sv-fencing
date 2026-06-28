@@ -56,7 +56,7 @@ const hero = home?.data.hero;
   <Section theme="primary">
     <StatsBar
       items={[
-        { value: 'From $80/m', label: 'Timber paling fencing' },
+        { value: 'From $80/m', label: 'Standard residential fencing' },
         { value: 'Free quotes', label: 'No obligation, fixed price' },
         { value: '1–2 days', label: 'Standard boundary install' },
         { value: '15+ colours', label: 'Colorbond steel range' }
@@ -101,6 +101,7 @@ const hero = home?.data.hero;
           <dt>Service area</dt>
           <dd>Yarra Valley & Melbourne's Eastern Suburbs</dd>
         </dl>
+        <p class="contact-note">We come to you — free on-site measure and quote across our full service area.</p>
       </div>
       <form name="contact" method="post" data-netlify="false" class="contact-form">
         <label>
@@ -192,7 +193,7 @@ const hero = home?.data.hero;
   .contact-form select,
   .contact-form textarea {
     width: 100%;
-    border: 1px solid var(--color-rule);
+    border: 1.5px solid var(--color-rule);
     border-radius: var(--radius-sm);
     padding: 0.7rem 0.85rem;
     background: var(--color-page);
@@ -200,6 +201,15 @@ const hero = home?.data.hero;
     font-size: var(--text-base);
     font-family: inherit;
     line-height: 1.5;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: var(--focus-ring);
   }
 
   .contact-form select {
